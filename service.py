@@ -1,11 +1,13 @@
 from aiohttp import web
 from aiohttp_swagger import setup_swagger
 from redis import add_redis, dispose_redis
-from endpoints.endpoints import feel_storage, convert
+from endpoints.converting import convert
+from endpoints.feeling import feel_storage
 
 
-async def create_service():
+async def create_service(config: dict):
     service = web.Application()
+    service['config'] = config
     service.on_startup.append(add_redis)
     service.on_cleanup.append(dispose_redis)
     service.add_routes([web.post('/database', feel_storage),
