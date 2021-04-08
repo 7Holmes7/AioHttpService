@@ -5,6 +5,7 @@ This is a Converter using Aiohttp and Redis
 2. Create a Virtual Environment `python -m venv <venv_name>`
 3. Activate Virtual Environment `source <venv_name>>/bin/activate`
 4. Install Requirements Package `pip install -r requirements.txt`
+5. Run `python service.py`
 
 Service`s endpoints:
 - /convert
