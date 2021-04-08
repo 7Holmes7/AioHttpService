@@ -3,6 +3,7 @@ from aiohttp_swagger import setup_swagger
 from redis import add_redis, dispose_redis
 from endpoints.converting import convert
 from endpoints.feeling import feel_storage
+from config import CONFIG
 
 
 async def create_service(config: dict):
@@ -16,3 +17,6 @@ async def create_service(config: dict):
     setup_swagger(service)
 
     return service
+
+if __name__ == '__main__':
+    web.run_app(create_service(CONFIG))
