@@ -40,6 +40,8 @@ async def convert(request):
     if set(request_params.keys()) != {'from', 'to', 'amount'}:
         return web.json_response(data={'error': 'invalid params'})
 
+    # TODO: params validation
+
     actual_currency: bytes = await request.app['redis'].hget(VALID_REDIS_KEY, request_params['from'])
     if actual_currency is None:
         old_currency: bytes = await request.app['redis'].hget(OLD_REDIS_KEY, request_params['from'])
